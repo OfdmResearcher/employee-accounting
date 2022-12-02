@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
-@RequestMapping(path="/employee")
+@RequestMapping(path = "/employee")
 @RestController
 public class EmployeeController {
 
@@ -26,19 +26,21 @@ public class EmployeeController {
 
     @GetMapping(path = "/add")
     public Employee addEmployee(@RequestParam(name = "firstName") String firstName,
-                                @RequestParam(name = "lastName") String lastName) {
-       return employeeService.addEmployee(firstName, lastName);
+                                @RequestParam(name = "lastName") String lastName,
+                                @RequestParam(name = "salary") double salary,
+                                @RequestParam(name = "departmentId") int department) {
+        return employeeService.addEmployee(firstName, lastName, salary, department);
     }
 
     @GetMapping(path = "/remove")
     public Employee removeEmployee(@RequestParam(name = "firstName") String firstName,
-                                @RequestParam(name = "lastName") String lastName) {
+                                   @RequestParam(name = "lastName") String lastName) {
         return employeeService.removeEmployee(firstName, lastName);
     }
 
     @GetMapping(path = "/find")
     public Employee findEmployee(@RequestParam(name = "firstName") String firstName,
-                                @RequestParam(name = "lastName") String lastName) {
+                                 @RequestParam(name = "lastName") String lastName) {
         return employeeService.findEmployee(firstName, lastName);
     }
 }
